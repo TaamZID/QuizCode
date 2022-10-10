@@ -5,10 +5,19 @@ import "./Home.css";
 
 const Home = () => {
   const { data } = useLoaderData();
+
+  const handleQuizDetails = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="home-container">
       {data.map((topic) => (
-        <Topic key={topic.id} topic={topic}></Topic>
+        <Topic
+          key={topic.id}
+          topic={topic}
+          handleQuizDetails={handleQuizDetails}
+        ></Topic>
       ))}
     </div>
   );
