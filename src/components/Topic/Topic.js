@@ -1,5 +1,6 @@
 import React from "react";
 import "./Topic.css";
+import { Link } from "react-router-dom";
 
 const Topic = ({ topic, handleQuizDetails }) => {
   const { logo, name, id } = topic;
@@ -8,10 +9,12 @@ const Topic = ({ topic, handleQuizDetails }) => {
       <img src={logo} alt="" className="logo" />
       <div className="nb">
         <p>{name}</p>
-        <button onClick={() => handleQuizDetails(id)}>Start Practice</button>
+        <button><Link to={`/quiz/${id}`}>Start Practice</Link></button>
       </div>
     </div>
   );
 };
 
 export default Topic;
+
+// onClick={() => handleQuizDetails(id)}
