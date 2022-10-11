@@ -2,7 +2,7 @@ import React from "react";
 import "./Topic.css";
 import { Link } from "react-router-dom";
 
-const Topic = ({ topic, handleQuizDetails }) => {
+const Topic = ({ topic }) => {
   const { logo, name, id } = topic;
   return (
     <div className="topic-container">
