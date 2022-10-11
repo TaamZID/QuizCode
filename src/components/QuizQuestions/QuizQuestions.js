@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import "./QuizQuestions.css";
 
 const QuizQuestions = ({ ques }) => {
   const { question, options, id, correctAnswer } = ques;
@@ -19,13 +22,36 @@ const QuizQuestions = ({ ques }) => {
     setAnswer(e.target.value);
   };
 
+  const showCorrectAnswer = () => {
+    toast.success(
+      <div>
+        Correct Answer: <b>{correctAnswer}</b>
+      </div>
+    );
+  };
+
   // if (answer === correctAnswer) {
   //   // message = <p>Correct Answer</p>;
   // }
 
   return (
     <div>
-      {<h3>{question}</h3>}
+      <div className="head">
+        {
+          <h3>
+            {question
+              .replace("<p>", "")
+              .replace("</p>", "")
+              .replace("&nbsp;", "")
+              .replace("&nbsp;&nbsp;", "")}
+          </h3>
+        }
+        <FontAwesomeIcon
+          className="eye"
+          icon={faEye}
+          onClick={showCorrectAnswer}
+        />
+      </div>
       {options.map((result) => (
         <div>
           <input
@@ -40,7 +66,6 @@ const QuizQuestions = ({ ques }) => {
         </div>
       ))}
       {message}
-      {/* <button onClick={notify}>Notify!</button> */}
       <ToastContainer position="top-center" duration={3000} />
     </div>
   );
