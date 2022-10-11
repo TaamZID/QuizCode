@@ -1,16 +1,27 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const QuizQuestions = ({ ques }) => {
   const { question, options, id, correctAnswer } = ques;
-  const [answer, setAnswer] = useState();
+  const [answer, setAnswer] = useState([]);
+  let message;
+
+  const notify = () => {
+    if (answer !== correctAnswer) {
+      toast.error("Wrong Answer!");
+    } else {
+      toast.success("Correct Answer!");
+    }
+  };
 
   const getCorrectAnswer = (e) => {
     setAnswer(e.target.value);
   };
-  let message;
-  if (answer === correctAnswer) {
-    message = <p>Correct Answer</p>;
-  }
+
+  // if (answer === correctAnswer) {
+  //   // message = <p>Correct Answer</p>;
+  // }
 
   return (
     <div>
@@ -22,13 +33,15 @@ const QuizQuestions = ({ ques }) => {
             key={result.id}
             name={id}
             value={result}
-            onClick={getCorrectAnswer}
+            onClick={notify}
+            onChange={getCorrectAnswer}
           ></input>
           <label>{result}</label>
         </div>
       ))}
       {message}
-      {/* <p>{answer}</p> */}
+      {/* <button onClick={notify}>Notify!</button> */}
+      <ToastContainer position="top-center" duration={3000} />
     </div>
   );
 };
