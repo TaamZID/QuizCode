@@ -9,7 +9,9 @@ const Topic = ({ topic }) => {
       <img src={logo} alt="" className="logo" />
       <div className="nb">
         <p>{name}</p>
-        <button><Link to={`/quiz/${id}`}>Start Practice</Link></button>
+        <button>
+          <Link to={`/quiz/${id}`}>Start Practice</Link>
+        </button>
       </div>
     </div>
   );
