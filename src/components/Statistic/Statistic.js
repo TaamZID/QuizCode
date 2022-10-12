@@ -1,6 +1,5 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import ShowStatistic from "../../ShowStatistic/ShowStatistic";
 import {
   BarChart,
   Bar,
@@ -15,14 +14,16 @@ import {
 
 const Statistic = () => {
   const data = useLoaderData();
-  console.log(data.data);
   return (
     <div>
-      <BarChart width={500} height={400} data={data.data}>
-        <XAxis dataKey="name" />
-        <YAxis dataKey="total" />
-        <Bar dataKey="total" fill="#8884d8" />
-      </BarChart>
+      <h2>Statistics</h2>
+      <div className="rechart">
+        <BarChart width={500} height={400} data={data.data}>
+          <XAxis dataKey="name" />
+          <YAxis dataKey="total" />
+          <Bar dataKey="total" fill="#8884d8" />
+        </BarChart>
+      </div>
     </div>
   );
 };
